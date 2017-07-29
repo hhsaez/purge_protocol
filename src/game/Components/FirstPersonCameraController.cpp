@@ -20,7 +20,7 @@ void FirstPersonCameraController::onAttach( void )
 	NodeComponent::onAttach();
 
 	auto geo = crimild::alloc< Geometry >();
-	geo->attachPrimitive( crimild::alloc< QuadPrimitive >( 0.0025f, 0.0025f, VertexFormat::VF_P3_UV2 ) );
+	geo->attachPrimitive( crimild::alloc< QuadPrimitive >( 0.005f, 0.005f, VertexFormat::VF_P3_UV2 ) );
 	geo->local().setTranslate( 0.0f, 0.0f, -0.25f );
 	auto m = crimild::alloc< Material >();
 	m->setColorMap( AssetManager::getInstance()->get< Texture >( "assets/textures/cursor.tga" ) );

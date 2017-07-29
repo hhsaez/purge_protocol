@@ -4,7 +4,7 @@ message = {
 		{
 			type = 'purge::ConsoleMessage',
 			timeout = 3.0,
-			nextMessage = 'assets/scripts/prefabs/console_test_003.lua',
+			nextMessage = 'assets/scripts/prefabs/console_test_004.lua',
 		},
 	},
 }

@@ -33,7 +33,7 @@ void ConsoleMessage::start( void )
 			static const std::string SUCCESS = "Success";
 			static const std::string FAILURE = "Failure";
 			
-			if ( node->getName() == SUCCESS ) {
+			if ( node->getName().compare( 0, SUCCESS.length(), SUCCESS ) == 0 ) {
 				node->attachComponent< UIResponder >( [this]( Node *n ) {
 					broadcastMessage( messaging::ShowNextMessage { _nextMessage } );
 					return true;
