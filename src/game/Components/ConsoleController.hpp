@@ -14,6 +14,14 @@ namespace purge {
 	public:
 		explicit ConsoleController( crimild::scripting::ScriptEvaluator &eval );
 		virtual ~ConsoleController( void );
+
+		virtual void start( void ) override;
+
+	private:
+		void showMessage( std::string message );
+
+	private:
+		crimild::SharedPointer< crimild::Node > _currentMessage;
 	};
 
 }

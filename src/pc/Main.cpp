@@ -30,6 +30,8 @@
 #include <Crimild_Scripting.hpp>
 
 #include "Components/FirstPersonCameraController.hpp"
+#include "Components/ConsoleController.hpp"
+#include "Components/ConsoleMessage.hpp"
 
 using namespace crimild;
 using namespace crimild::scripting;
@@ -37,6 +39,8 @@ using namespace crimild::scripting;
 int main( int argc, char **argv )
 {
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::FirstPersonCameraController );
+	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ConsoleController );
+	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ConsoleMessage );
 	
     auto settings = crimild::alloc< LuaSettings >( argc, argv );
 	settings->set( "video.width", 1024 );
@@ -52,50 +56,14 @@ int main( int argc, char **argv )
 	settings->parseCommandLine( argc, argv );
 
 	auto sim = crimild::alloc< GLSimulation >( "The P.U.R.G.E. Protocol", settings );
+	sim->addSystem( crimild::alloc< UISystem >() );
 
 	//AssetManager::getInstance()->loadFont( AssetManager::FONT_SYSTEM, "assets/fonts/Courier New.txt" );
 	//Profiler::getInstance()->setOutputHandler( crimild::alloc< ProfilerScreenOutputHandler >() );
 
-	//SceneManager sceneManager;
-	//sceneManager.load();
-
 	sim->loadScene( "assets/scripts/scenes/room.lua", crimild::alloc< LuaSceneBuilder >() );
 
 	Input::getInstance()->setMouseCursorMode( Input::MouseCursorMode::HIDDEN );
-
-	/*
-	sim->registerMessageHandler< crimild::messaging::SimulationWillUpdate >( []( crimild::messaging::SimulationWillUpdate const & ) {
-		if ( Input::getInstance()->joystickIsPresent() ) {
-#if 0
-			std::cout << "Joy state:";
-			for ( int i = 0; i < 7; i++ ) {
-				std::cout << "\n\t" << i << ": " << Input::getInstance()->getJoystickAxis( i );
-			}
-			std::cout << std::endl;
-#endif
-			float hAxis = Input::getInstance()->getJoystickAxis( 0 );
-			if ( Numericf::fabs( hAxis ) < 0.25f ) {
-				hAxis = 0.0f;
-			}
-
-			float lrTrigger = Input::getInstance()->getJoystickAxis( 2 );
-			if ( Numericf::fabs( lrTrigger ) < 0.25f ) {
-				lrTrigger = 0.0f;
-			}
-			else {
-				lrTrigger = 1.0f;
-			}
-
-			if ( !Input::getInstance()->isKeyDown( CRIMILD_INPUT_KEY_LEFT ) && !Input::getInstance()->isKeyDown( CRIMILD_INPUT_KEY_RIGHT ) ) {
-				Input::getInstance()->setAxis( Input::AXIS_HORIZONTAL, hAxis );
-			}
-
-			if ( !Input::getInstance()->isKeyDown( CRIMILD_INPUT_KEY_ENTER ) ) {
-				Input::getInstance()->setAxis( "Attack", lrTrigger );
-			}
-		}
-	});
-	*/
 
 	sim->registerMessageHandler< crimild::messaging::KeyPressed >( [settings]( crimild::messaging::KeyPressed const &msg ) {
 		float horiAxisCoeff = 1.0f;

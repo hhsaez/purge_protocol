@@ -16,21 +16,18 @@ local console = {
 			filename = 'assets/models/console_on.fbx',
 		},
 		{
-			filename = 'assets/models/console_welcome.fbx',
-		},
-		{
 			type = 'crimild::Light',
 			lightType = 'point',
 			color = { 0.75, 0.75, 1.0, 1.0 },
 			attenuation = { 0.0, 0.0, 1.0 },
 			transformation = {
-				translate = { 0.0, 1.0, 0.0 },
+				translate = { 0.0, 0.25, 0.0 },
 			},
 		},			
 	},
 	components = {
 		{
-			type = 'purge::ConsoleComponent',
+			type = 'purge::ConsoleController',
 		},
 	},
 	transformation = {
@@ -56,12 +53,9 @@ local lighting = {
 			type = 'crimild::Light',
 			lightType = 'point',
 			color = { 1.0, 1.0, 1.0, 1.0 },
-			--attenuation = { 0.75, 0.0, 0.0 },
 			ambient = { 0.05, 0.05, 0.05, 1.0 },
-			--castShadows = true,
 			transformation = {
 				translate = { 0.0, 3.0, 0.0 },
-				--rotate_euler = { -50.0, -30.0, 0.0 },
 			},
 		},
 	},
@@ -74,8 +68,6 @@ scene = {
 		lighting,
 		console,
 		camera,
-	},
-	components = {
 	},
 }
 
