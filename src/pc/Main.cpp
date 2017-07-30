@@ -36,6 +36,7 @@
 #include "Components/Expendable.hpp"
 #include "Components/ExpendableGroup.hpp"
 #include "Components/LightController.hpp"
+#include "Components/Button.hpp"
 
 using namespace crimild;
 using namespace crimild::scripting;
@@ -49,6 +50,7 @@ int main( int argc, char **argv )
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::Expendable );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ExpendableGroup );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::LightController );
+	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::Button );
 	
     auto settings = crimild::alloc< LuaSettings >( argc, argv );
 	settings->set( "video.width", 1024 );
@@ -66,10 +68,7 @@ int main( int argc, char **argv )
 	auto sim = crimild::alloc< GLSimulation >( "The P.U.R.G.E. Protocol", settings );
 	sim->addSystem( crimild::alloc< UISystem >() );
 
-	//AssetManager::getInstance()->loadFont( AssetManager::FONT_SYSTEM, "assets/fonts/Courier New.txt" );
-	//Profiler::getInstance()->setOutputHandler( crimild::alloc< ProfilerScreenOutputHandler >() );
-
-	sim->loadScene( "assets/scripts/scenes/room.lua", crimild::alloc< LuaSceneBuilder >() );
+	sim->loadScene( "assets/scripts/scenes/main.lua", crimild::alloc< LuaSceneBuilder >() );
 
 	Input::getInstance()->setMouseCursorMode( Input::MouseCursorMode::HIDDEN );
 

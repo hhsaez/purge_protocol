@@ -3,6 +3,8 @@ message = {
 	components = {
 		{
 			type = 'purge::ConsoleMessage',
+			timeout = 3.0,
+			event = 'endGame',
 		},
 	},
 }

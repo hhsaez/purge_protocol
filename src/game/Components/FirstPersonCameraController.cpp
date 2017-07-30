@@ -43,6 +43,8 @@ void FirstPersonCameraController::onAttach( void )
 void FirstPersonCameraController::onDetach( void )
 {
 	NodeComponent::onDetach();
+
+	Input::getInstance()->setMouseCursorMode( Input::MouseCursorMode::NORMAL );
 }
 
 void FirstPersonCameraController::start( void )

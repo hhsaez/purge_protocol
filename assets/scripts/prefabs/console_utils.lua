@@ -22,7 +22,7 @@ function createProcessingMessage( id, eventName )
 		components = {
 			{
 				type = 'purge::ConsoleMessage',
-				timeout = 5.0,
+				timeout = 3.0,
 				nextMessage = 'assets/scripts/prefabs/console_test_' .. id .. '_result.lua',
 				event = eventName,
 			},

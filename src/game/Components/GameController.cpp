@@ -22,7 +22,7 @@ void GameController::start( void )
 		if ( m.eventName == "endGame" ) {
 			_timer.reset();
 			_timer.setTimeout( [this] {
-				broadcastMessage( crimild::messaging::ReloadScene { } );
+				Simulation::getInstance()->loadScene( "assets/scripts/scenes/main.lua", crimild::alloc< LuaSceneBuilder >() );
 			}, 5.0f );
 		}
 	});
