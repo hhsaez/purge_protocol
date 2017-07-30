@@ -81,5 +81,10 @@ scene = {
 		console,
 		camera,
 	},
+	components = {
+		{
+			type = 'purge::GameController',
+		},
+	},
 }
 

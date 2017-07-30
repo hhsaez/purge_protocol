@@ -36,7 +36,7 @@ void ConsoleController::start( void )
 			showMessage( "assets/scripts/prefabs/console_game_over_000.lua" );
 		}
 	});
-	
+
 	showMessage( "assets/scripts/prefabs/console_welcome.lua" );
 }
 

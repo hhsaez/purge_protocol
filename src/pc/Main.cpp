@@ -31,6 +31,7 @@
 
 #include "Components/FirstPersonCameraController.hpp"
 #include "Components/ConsoleController.hpp"
+#include "Components/GameController.hpp"
 #include "Components/ConsoleMessage.hpp"
 
 using namespace crimild;
@@ -41,6 +42,7 @@ int main( int argc, char **argv )
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::FirstPersonCameraController );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ConsoleController );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ConsoleMessage );
+	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::GameController );
 	
     auto settings = crimild::alloc< LuaSettings >( argc, argv );
 	settings->set( "video.width", 1024 );

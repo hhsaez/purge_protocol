@@ -13,6 +13,9 @@ namespace purge {
 			int score;
 		};
 
+		struct MessageEvent {
+			std::string eventName;
+		};
 	}
 
 	class ConsoleMessage :

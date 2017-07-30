@@ -9,11 +9,20 @@ ConsoleMessage::ConsoleMessage( ScriptEvaluator &eval )
 {
 	eval.getPropValue( "nextMessage", _nextMessage );
 
+	std::string messageEventName;
+	eval.getPropValue( "event", messageEventName );
+
 	crimild::Real32 timeout;
 	if ( eval.getPropValue( "timeout", timeout ) ) {
 		if ( timeout > 0.0f ) {
-			_timer.setTimeout( [this] {
-				broadcastMessage( messaging::ShowNextMessage { _nextMessage } );
+			_timer.setTimeout( [this, messageEventName] {
+				if ( !messageEventName.empty() ) {
+					broadcastMessage( messaging::MessageEvent { messageEventName } );
+				}
+
+				if ( !_nextMessage.empty() ) {
+					broadcastMessage( messaging::ShowNextMessage { _nextMessage } );
+				}
 			}, timeout );
 		}
 	}
