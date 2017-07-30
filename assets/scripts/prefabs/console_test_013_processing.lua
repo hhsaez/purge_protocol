@@ -1,3 +1,3 @@
 require 'assets/scripts/prefabs/console_utils'
 
-message = createProcessingMessage( '013' )
+message = createProcessingMessage( '013', 'main_light_on' )

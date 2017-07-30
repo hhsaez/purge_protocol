@@ -11,7 +11,7 @@ function createTestMessage( id )
 	}
 end
 
-function createProcessingMessage( id )
+function createProcessingMessage( id, eventName )
 	return {
 		type = 'crimild::Group',
 		nodes = {
@@ -24,6 +24,7 @@ function createProcessingMessage( id )
 				type = 'purge::ConsoleMessage',
 				timeout = 5.0,
 				nextMessage = 'assets/scripts/prefabs/console_test_' .. id .. '_result.lua',
+				event = eventName,
 			},
 		},
 	}

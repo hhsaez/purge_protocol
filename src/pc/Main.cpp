@@ -33,6 +33,9 @@
 #include "Components/ConsoleController.hpp"
 #include "Components/GameController.hpp"
 #include "Components/ConsoleMessage.hpp"
+#include "Components/Expendable.hpp"
+#include "Components/ExpendableGroup.hpp"
+#include "Components/LightController.hpp"
 
 using namespace crimild;
 using namespace crimild::scripting;
@@ -43,6 +46,9 @@ int main( int argc, char **argv )
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ConsoleController );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ConsoleMessage );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::GameController );
+	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::Expendable );
+	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ExpendableGroup );
+	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::LightController );
 	
     auto settings = crimild::alloc< LuaSettings >( argc, argv );
 	settings->set( "video.width", 1024 );
