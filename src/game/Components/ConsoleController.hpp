@@ -22,6 +22,8 @@ namespace purge {
 
 	private:
 		crimild::SharedPointer< crimild::Node > _currentMessage;
+		int _successCount = 0;
+		int _failureCount = 0;
 	};
 
 }

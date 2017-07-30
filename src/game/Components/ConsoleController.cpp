@@ -22,7 +22,19 @@ ConsoleController::~ConsoleController( void )
 void ConsoleController::start( void )
 {
 	registerMessageHandler< messaging::ShowNextMessage >( [ this ]( messaging::ShowNextMessage const &msg ) {
-		showMessage( msg.fileName );
+		if ( msg.score > 0 ) {
+			_successCount++;
+		}
+		else if ( msg.score < 0 ) {
+			_failureCount++;
+		}
+
+		if ( msg.score == 0 || _failureCount < 2 ) {
+			showMessage( msg.fileName );
+		}
+		else {
+			showMessage( "assets/scripts/prefabs/console_game_over_000.lua" );
+		}
 	});
 	
 	showMessage( "assets/scripts/prefabs/console_welcome.lua" );

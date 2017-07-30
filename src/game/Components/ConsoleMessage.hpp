@@ -10,6 +10,7 @@ namespace purge {
 
 		struct ShowNextMessage {
 			std::string fileName;
+			int score;
 		};
 
 	}

@@ -36,19 +36,19 @@ void ConsoleMessage::start( void )
 			
 			if ( node->getName().compare( 0, SUCCESS.length(), SUCCESS ) == 0 ) {
 				node->attachComponent< UIResponder >( [this]( Node *n ) {
-					broadcastMessage( messaging::ShowNextMessage { _nextMessage } );
+					broadcastMessage( messaging::ShowNextMessage { _nextMessage, 1 } );
 					return true;
 				});
 			}
 			else if ( node->getName().compare( 0, FAILURE.length(), FAILURE ) == 0 ) {
 				node->attachComponent< UIResponder >( [this]( Node *n ) {
-					broadcastMessage( messaging::ShowNextMessage { _nextMessage } );
+					broadcastMessage( messaging::ShowNextMessage { _nextMessage, -1 } );
 					return true;
 				});
 			}
 			else if ( node->getName().compare( 0, START.length(), START ) == 0 ) {
 				node->attachComponent< UIResponder >( [this]( Node *n ) {
-					broadcastMessage( messaging::ShowNextMessage { _nextMessage } );
+					broadcastMessage( messaging::ShowNextMessage { _nextMessage, 0 } );
 					return true;
 				});
 			}
