@@ -1,10 +1,10 @@
 message = {
-	filename = 'assets/models/console_welcome.fbx',
+	filename = 'assets/models/console_game_over_004.fbx',
 	components = {
 		{
 			type = 'purge::ConsoleMessage',
-			timeout = 2.0,
-			event = 'gameOver',
+			timeout = 5.0,
+			nextMessage = 'assets/scripts/prefabs/console_game_over_005.lua',
 		},
 	},
 }

@@ -8,7 +8,7 @@ message = {
 	components = {
 		{
 			type = 'purge::ConsoleMessage',
-			timeout = 5.0,
+			timeout = 3.0,
 			nextMessage = 'assets/scripts/prefabs/console_game_over_001.lua',
 		},
 	},

@@ -22,7 +22,7 @@ void GameController::start( void )
 		if ( m.eventName == "endGame" ) {
 			_timer.reset();
 			_timer.setTimeout( [this] {
-				Simulation::getInstance()->loadScene( "assets/scripts/scenes/main.lua", crimild::alloc< LuaSceneBuilder >() );
+				Simulation::getInstance()->loadScene( "assets/scripts/scenes/success.lua", crimild::alloc< LuaSceneBuilder >() );
 			}, 5.0f );
 		}
 		else if ( m.eventName == "gameOver" ) {

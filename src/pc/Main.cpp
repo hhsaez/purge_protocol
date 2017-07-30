@@ -38,7 +38,7 @@
 #include "Components/LightController.hpp"
 #include "Components/Button.hpp"
 #include "Components/SmokeController.hpp"
-#include "Components/GameOverController.hpp"
+#include "Components/LevelLoader.hpp"
 
 using namespace crimild;
 using namespace crimild::scripting;
@@ -49,7 +49,7 @@ int main( int argc, char **argv )
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ConsoleController );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ConsoleMessage );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::GameController );
-	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::GameOverController );
+	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::LevelLoader );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::Expendable );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::ExpendableGroup );
 	CRIMILD_SCRIPTING_REGISTER_BUILDER( purge::LightController );

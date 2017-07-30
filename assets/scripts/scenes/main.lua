@@ -71,7 +71,7 @@ local ui = {
 				{
 					type = 'purge::Button',
 					action = 'load_scene',
-					data = 'assets/scripts/scenes/room.lua',
+					data = 'assets/scripts/scenes/intro.lua',
 				},
 			},
 		},
