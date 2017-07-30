@@ -1,10 +1,18 @@
 message = {
-	filename = 'assets/models/console_welcome.fbx',
+	type = 'crimild::Group',
+	nodes = {
+		{
+			filename = 'assets/models/console_welcome.fbx',
+		},
+		{
+			filename = 'assets/models/console_start.fbx',
+		},
+	},
 	components = {
 		{
 			type = 'purge::ConsoleMessage',
-			timeout = 5.0,
-			nextMessage = 'assets/scripts/prefabs/console_test_001.lua',
+			nextMessage = 'assets/scripts/prefabs/console_status.lua',
+			waitForInput = true,
 		},
 	},
 }

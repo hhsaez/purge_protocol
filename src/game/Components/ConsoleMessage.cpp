@@ -32,6 +32,7 @@ void ConsoleMessage::start( void )
 		getNode()->perform( Apply( [this]( Node *node ) {
 			static const std::string SUCCESS = "Success";
 			static const std::string FAILURE = "Failure";
+			static const std::string START = "Start";
 			
 			if ( node->getName().compare( 0, SUCCESS.length(), SUCCESS ) == 0 ) {
 				node->attachComponent< UIResponder >( [this]( Node *n ) {
@@ -40,6 +41,12 @@ void ConsoleMessage::start( void )
 				});
 			}
 			else if ( node->getName().compare( 0, FAILURE.length(), FAILURE ) == 0 ) {
+				node->attachComponent< UIResponder >( [this]( Node *n ) {
+					broadcastMessage( messaging::ShowNextMessage { _nextMessage } );
+					return true;
+				});
+			}
+			else if ( node->getName().compare( 0, START.length(), START ) == 0 ) {
 				node->attachComponent< UIResponder >( [this]( Node *n ) {
 					broadcastMessage( messaging::ShowNextMessage { _nextMessage } );
 					return true;

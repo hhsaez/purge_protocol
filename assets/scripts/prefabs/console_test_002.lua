@@ -1,11 +1,3 @@
-message = {
-	filename = 'assets/models/console_test_002.fbx',
-	components = {
-		{
-			type = 'purge::ConsoleMessage',
-			nextMessage = 'assets/scripts/prefabs/console_test_002_result.lua',
-			waitForInput = true,
-		},
-	},
-}
+require 'assets/scripts/prefabs/console_utils'
 
+message = createTestMessage( '002' )

@@ -19,6 +19,8 @@ void FirstPersonCameraController::onAttach( void )
 {
 	NodeComponent::onAttach();
 
+	auto camera = getNode< Camera >();
+
 	auto geo = crimild::alloc< Geometry >();
 	geo->attachPrimitive( crimild::alloc< QuadPrimitive >( 0.005f, 0.005f, VertexFormat::VF_P3_UV2 ) );
 	geo->local().setTranslate( 0.0f, 0.0f, -0.25f );
@@ -28,7 +30,13 @@ void FirstPersonCameraController::onAttach( void )
 	m->setDepthState( crimild::alloc< DepthState >( false ) );
 	m->setProgram( Renderer::getInstance()->getShaderProgram( Renderer::SHADER_PROGRAM_UNLIT_TEXTURE ) );
 	geo->getComponent< MaterialComponent >()->attachMaterial( m );
-	getNode< Camera >()->attachNode( geo );
+	
+	camera->attachNode( geo );
+
+    auto renderPass = crimild::alloc< CompositeRenderPass >();
+    renderPass->attachRenderPass( crimild::alloc< ShadowRenderPass >() );
+    renderPass->attachRenderPass( crimild::alloc< StandardRenderPass >() );
+    camera->setRenderPass( renderPass );	
 }
 
 void FirstPersonCameraController::onDetach( void )

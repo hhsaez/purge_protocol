@@ -51,9 +51,21 @@ local lighting = {
 	nodes = {
 		{
 			type = 'crimild::Light',
+			lightType = 'directional',
+			color = { 1.0, 1.0, 0.5, 1.0 },
+			--ambient = { 0.05, 0.05, 0.05, 1.0 },
+			--castShadows = true,
+			transformation = {
+				translate = { -10.0, 3.0, 0.0 },
+				rotate_euler = { -10.0, -90.0, 0.0 },
+			},
+		},
+		{
+			type = 'crimild::Light',
 			lightType = 'point',
 			color = { 1.0, 1.0, 1.0, 1.0 },
 			ambient = { 0.05, 0.05, 0.05, 1.0 },
+			attenuation = { 2.0, 0.0, 0.0 },
 			transformation = {
 				translate = { 0.0, 3.0, 0.0 },
 			},
