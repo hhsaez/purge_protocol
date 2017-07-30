@@ -4,7 +4,7 @@ message = {
 		{
 			type = 'purge::ConsoleMessage',
 			timeout = 2.0,
-			event = 'endGame',
+			event = 'gameOver',
 		},
 	},
 }

@@ -1,4 +1,5 @@
 require 'assets/scripts/prefabs/camera'
+require 'assets/scripts/prefabs/smoke'
 
 local camera = createMainCamera(
 	{
@@ -115,6 +116,19 @@ local lighting = {
 	},
 }
 
+local fx = {
+	type = 'crimild::Group',
+	nodes = {
+		buildSmokeFX(
+			{
+				transformation = {
+					translate = { 0.0, 0.0, 0.0 },
+				},
+			}
+		),
+	},
+}
+
 scene = {
 	type = 'crimild::Group',
 	nodes = {
@@ -122,6 +136,7 @@ scene = {
 		lighting,
 		console,
 		actors,
+		fx,
 		camera,
 	},
 	components = {
