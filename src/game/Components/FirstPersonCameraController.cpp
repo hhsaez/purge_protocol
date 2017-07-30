@@ -3,6 +3,7 @@
 using namespace purge;
 
 using namespace crimild;
+using namespace crimild::navigation;
 using namespace crimild::scripting;
 
 FirstPersonCameraController::FirstPersonCameraController( ScriptEvaluator &eval )
@@ -80,6 +81,14 @@ void FirstPersonCameraController::update( const Clock &c )
 	direction[ 1 ] = 0.0f;
 	direction.normalize();
 
-	root->local().translate() += c.getDeltaTime() * _speed * ( dSpeed * direction + rSpeed * right );
+	auto currentPos = root->getLocal().getTranslate();
+	auto newPos = currentPos + c.getDeltaTime() * _speed * ( dSpeed * direction + rSpeed * right );
+
+	auto nav = getComponent< NavigationController >();
+	if ( nav != nullptr ) {
+		newPos = nav->move( currentPos, newPos );
+	}
+
+	root->local().setTranslate( newPos );
 }
 

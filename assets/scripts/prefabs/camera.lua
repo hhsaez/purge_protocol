@@ -12,7 +12,14 @@ function createMainCamera( config )
 		{
 			type = 'purge::FirstPersonCameraController',
 			speed = 2.0,
-		}
+		}		
+	)
+
+	table.insert(
+		components,
+		{
+			type = 'crimild::navigation::NavigationController',
+		}		
 	)
 
 	return {
